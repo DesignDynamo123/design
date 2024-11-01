@@ -113,8 +113,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    "BASE_DIR / 'design_dynamo/static',
+    os.path.join(BASE_DIR, 'design_dynamo/static'), 
 ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
