@@ -113,7 +113,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    "C:/Users/dhruv/PycharmProjects/DesignDynamo/designdynamo/design_dynamo/static",
+    "BASE_DIR / 'design_dynamo/static',
 ]
 
 # Default primary key field type
