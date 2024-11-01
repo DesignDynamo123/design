@@ -75,13 +75,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# Initialize Firebase Admin SDK
-cred = credentials.Certificate('path/to/your/firebase/serviceAccountKey.json')
-firebase_admin.initialize_app(cred, {
-    'databaseURL': FIREBASE_DATABASE_URL
-})
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
