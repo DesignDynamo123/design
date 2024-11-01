@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from django.contrib import messages
 
-cred = credentials.Certificate(r"C:\Users\dhruv\PycharmProjects\DesignDynamo\designdynamo\design_dynamo/cred.json")
+cred = credentials.Certificate(r"https://raw.githubusercontent.com/DesignDynamo123/design/master/design_dynamo/cred.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 def home(request):
