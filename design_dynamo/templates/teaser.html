@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Teasers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            background-color: white;
+            font-family: "Gemerald", serif;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px 0; /* Optional: some padding around the content */
+        }
+
+        /* Footer styling */
+        .fcontainer {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Social media icon styling */
+        .social-media {
+            margin-bottom: 10px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-icon:hover {
+            color: #55acee;
+        }
+
+        .credit {
+            text-align: center;
+            font-size: 14px;
+        }
+.blur-container {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffefdd; /* Adjust the opacity as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: auto;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: auto; /* Adjust the width of the navbar container */
+  transition: width 10s ease; /* Transition for expanding the container */
+}
+.blur-container:hover {
+  width: auto;
+  height: 50px;
+}
+.blur-container:hover .navbar-logo {
+  transform: translateX(50%); /* Move the logo to its original position on hover */
+}
+
+
+    .navbar-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+  width: 40px; /* Adjust logo size as needed */
+  height: 40px;
+  transition: transform 0.3s ease; /* Transition for moving the logo */
+}
+
+    .navbar-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: none;
+       transition: opacity 10s ease;
+    }
+    .blur-container:hover .navbar-links {
+     display: flex;
+}
+
+    .navbar-links li {
+      margin-right: 70px; /* Adjust the space between navbar links */
+    }
+
+    .navbar-links li:last-child {
+      margin-right: 70px;
+    }
+
+    .navbar-links li a {
+      color: black;
+      text-decoration: none;
+      font-size: 20px; /* Adjust font size as needed */
+    }
+
+    .navbar-links li a:hover {
+      color: black;
+      background-color: rgba(245, 189, 2, 0.7);
+      border-radius: 20px;
+      padding: 5px;
+      text-align: center;
+    }
+    .website-name {
+  font-family: "Javanese Text", sans-serif;
+  color: rgba(245, 189, 2, 0.7);
+  margin-top:10px;
+  margin-right:20px;
+  font-size: 20px;
+   transition: opacity 0s ease;
+}
+    .blur-container:hover .website-name {
+  opacity: 0; /* Ensure the website name remains visible on hover */
+}
+       .container {
+  position: relative;
+  width: 480px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  background-color:	#ffefdd; /* White color with transparency */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+  overflow: hidden; /* Ensures the photo doesn't overflow */
+  opacity: 1;
+  transition: transform 0.3s ease; /* Added transition for hover effect */
+  margin-left: auto;
+  margin-right: auto;
+}
+  .container:hover {
+        }
+        .container:hover .name {
+            opacity: 0;
+        }
+        .container:hover img {
+            filter: blur(2px); /* Apply blur effect on hover */
+        }
+
+        .container:hover .description {
+            opacity: 1; /* Show description on hover */
+            transform: translateY(-50%); /* Move description upwards */
+        }
+
+        .description {
+            position: sticky;
+            bottom: 0%;
+    left: 15%;
+    width: 70%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease; /* Add transition */
+        }
+
+    .animate-container {
+      animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  img {
+    width: 100%;
+    height: 90%;
+    display: flex;
+  }
+  .name {
+    position: absolute;
+    left: 0;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+    font-weight: bold;
+    opacity: 1;
+  }
+<!--  .container:nth-child(1) {-->
+<!--    margin-right: 20px; /* Adjust spacing between containers */-->
+<!--  }-->
+  .container-wrapper {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+    </style>
+</head>
+<body>
+ <div class="content">
+ <br>
+ <br>
+ <br>
+ <div class="container-wrapper">
+    <div class="container" onclick="handlesurabhiClick()">
+      <img src="{% static '/surabhi.png' %}" alt="Surabhi">
+         <div class="name"><h5>Surabhi-Teaser</h5></div>
+     <div class="description">
+            <h5>Surabhi-Teaser</h5>
+            <p>We've employed cutting-edge video effects, including masking and beat sync, to capture the vibrant energy and excitement that define Surabhi.</p>
+        </div>
+    </div>
+    <div class="container" onclick="handlesamyakClick()">
+      <img src="{% static '/samyak.png' %}" alt="Samyak">
+      <div class="name"><h5>Samyak-Teaser</h5></div>
+         <div class="description">
+            <h5>Samyak-Teaser</h5>
+            <p>Each frame is designed to captivate and inspire, offering a glimpse into the extraordinary events and the vibrant community that defines Samyak.</p>
+        </div>
+    </div>
+  </div>
+ <div class="container-wrapper">
+    <div class="container" onclick="handledandiyaClick()">
+      <img src="{% static '/dandiya.png' %}" alt="Dandiya">
+      <div class="name"><h5>Dandiya-Teaser</h5></div>
+        <div class="description">
+            <h5>Dandiya-Teaser</h5>
+            <p>This teaser is a visual treat, enhanced with captivating effects. Experience a sneak peek of the rhythmic dances, colorful attire, and joyous atmosphere.</p>
+        </div>
+    </div>
+    <div class="container" onclick="handlecarnivalClick()">
+      <img src="{% static '/carnival.png' %}" alt="Carnival">
+      <div class="name"><h5>Carnival-Samyak</h5></div>
+        <div class="description">
+            <h5>Carnival-Samyak</h5>
+            <p>we've used dynamic effects like beat sync to amplify the energetic atmosphere and showcase the pre-event excitement of our students.</p>
+        </div>
+    </div>
+  </div>
+ <div class="container-wrapper">
+    <div class="container" onclick="handleramClick()">
+      <img src="{% static '/ram.png' %}" alt="Ram">
+      <div class="name"><h5>Ram-Aagman</h5></div>
+        <div class="description">
+            <h5>Ram-Aagman</h5>
+            <p> This teaser offers an eye-pleasing visual experience that highlights the anticipation for Lord Ram. Each frame is designed to evoke a sense of joy.</p>
+        </div>
+    </div>
+    <div class="container" onclick="handlereelClick()">
+      <img src="{% static '/sreel.png' %}" alt="Reel">
+      <div class="name"><h5>Samyak-Reel</h5></div>
+        <div class="description">
+            <h5>Samyak-Reel</h5>
+            <p>Each scene bursts with the lively atmosphere and high energy that make Samyak an unforgettable experience. Enhanced with captivating effects.</p>
+        </div>
+    </div>
+  </div>
+ </div>
+ <br>
+ <br>
+ <br>
+ <div class="fcontainer">
+       <div class="social-media">
+        <a href="https://www.facebook.com/" class="social-icon">
+            <img src="{% static '/facebook1.png' %}" alt="Facebook">
+        </a>
+        <a href="https://www.twitter.com/" class="social-icon">
+            <img src="{% static '/twitter1.png' %}" alt="Twitter">
+        </a>
+        <a href="https://www.instagram.com/" class="social-icon">
+            <img src="{% static '/inastagram.png' %}" alt="Instagram">
+        </a>
+        <!-- Add more social media icons as needed -->
+    </div>
+        <div class="credit">
+            <p>&copy; 2024 Design Dynamo. All rights reserved.</p>
+        </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+      function handlesurabhiClick() {
+  window.location.href = '/home';
+}
+      function handlesamyakClick() {
+  window.location.href = '/home';
+}
+      function handledandiyaClick() {
+  window.location.href = '/home';
+}
+      function handlecarnivalClick() {
+  window.location.href = '/home';
+}
+      function handleramClick() {
+  window.location.href = '/home';
+}
+      function handlereelClick() {
+  window.location.href = '/home';
+}
+  </script>
+</body>
+</html>

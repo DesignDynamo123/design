@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Under Maintenance</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-tFz+JxSqk4fsGmf4+iVZFy2tI6AmPKy0AQPz+EhLZK0piR+e1piY8UZ2qEn15As6rW1HZvoWR5StJE5lfk1z+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            width: 100%; /* Ensure the text takes full width of its container */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkling 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkling {
+            from {
+                opacity: 0.1;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Create random stars */
+        .star:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-duration: 3s;
+        }
+        .star:nth-child(2) {
+            top: 50%;
+            left: 70%;
+            animation-duration: 4s;
+        }
+        .star:nth-child(3) {
+            top: 30%;
+            left: 80%;
+            animation-duration: 2.5s;
+        }
+        .star:nth-child(4) {
+            top: 80%;
+            left: 40%;
+            animation-duration: 3.5s;
+        }
+        .star:nth-child(5) {
+            top: 60%;
+            left: 20%;
+            animation-duration: 3.8s;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stack elements vertically */
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Exciting Updates Coming Soon! <br> Stay tuned for stunning visuals and immersive content!</h1>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

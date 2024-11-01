@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      {% load static %}
+    <title>Design Dynamo</title>
+      <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+      <style>
+          @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600");
+          @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap");
+
+      html, body {
+           margin: 0%;
+            padding: 0%;
+            display: flex;
+        }
+#textcontainer {
+            position: relative;
+            left: 0;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background-color: #ebd3f8;
+            align-items: center;
+        }
+:root {
+  --bar-scale-y: 0;
+  --sparkle-color: rgb(253 244 215 / 40%);
+}
+
+@keyframes pop-word {
+  to {
+    transform: rotateX(0);
+  }
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bar-scale {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1) translate(4px, 1px) rotate(8deg);
+  }
+
+  100% {
+    transform: scale(0) translate(4px, 1px) rotate(8deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    text-shadow: 0 0 8px red;
+  }
+}
+
+body {
+
+}
+
+#myImage>h1 {
+  color: white;
+  font-family: "Playfair Display", Vidaloka, serif;
+  font-size: 12rem;
+
+  line-height: 0.85;
+  perspective: 500px;
+}
+
+.word {
+  display: block;
+  color: #ad49e1;
+  animation: show 0.01s forwards, pop-word 1.5s forwards;
+  animation-timing-function: cubic-bezier(0.14, 1.23, 0.33, 1.16);
+  opacity: 0;
+
+  transform: rotateX(120deg);
+  transform-origin: 50% 100%;
+}
+
+.word:nth-of-type(2) {
+  padding: 0 2rem;
+
+  animation-delay: 1.5s;
+
+  color: #2e073f;
+}
+.navbar-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 47px;
+  width: 60px;
+  height: 60px;
+}
+.superscript {
+  position: relative;
+  animation-delay: 3.6s;
+  color: #7a1cac;
+  animation-duration: 0.25s;
+  animation-name: shimmer;
+}
+
+<!--/* bars */-->
+<!--.superscript::before {-->
+<!--  &#45;&#45;bar-width: 25%;-->
+
+<!--  position: absolute;-->
+
+<!--  top: 37%;-->
+<!--  left: 47%;-->
+<!--  width: 14%;-->
+<!--  height: 48%;-->
+
+<!--  animation: bar-scale 0.25s linear 3s 1 forwards;-->
+
+<!--  background: linear-gradient(-->
+<!--    to right,-->
+<!--    white var(&#45;&#45;bar-width),-->
+<!--    transparent var(&#45;&#45;bar-width) calc(100% - var(&#45;&#45;bar-width)),-->
+<!--    white calc(100% - var(&#45;&#45;bar-width))-->
+<!--  );-->
+
+<!--  content: "";-->
+
+<!--  transform: scaleY(var(&#45;&#45;bar-scale-y));-->
+<!--}-->
+
+/* sparkle */
+.superscript::after {
+  --size: 10rem;
+
+  position: absolute;
+
+  top: 20%;
+  left: -50%;
+
+  width: var(--size);
+  height: var(--size);
+
+  animation: sparkle 0.4s linear 3.5s 1 forwards;
+
+  background: radial-gradient(
+      circle at center,
+      rgb(252 249 241 / 94%) 0% 7%,
+      transparent 7% 100%
+    ),
+    conic-gradient(
+      transparent 0deg 18deg,
+      var(--sparkle-color) 18deg,
+      transparent 20deg 40deg,
+      var(--sparkle-color) 40deg,
+      transparent 43deg 87deg,
+      var(--sparkle-color) 87deg,
+      transparent 95deg 175deg,
+      var(--sparkle-color) 175deg,
+      transparent 178deg 220deg,
+      var(--sparkle-color) 220deg,
+      transparent 222deg 270deg,
+      var(--sparkle-color) 270deg,
+      transparent 275deg 300deg,
+      var(--sparkle-color) 300deg,
+      transparent 303deg 360deg
+    );
+
+  border-radius: 50%;
+  clip-path: polygon(
+    50% 0,
+    59.13% 26.64%,
+    85.13% -2.35%,
+    100% 50%,
+    50% 100%,
+    0 50%,
+    31.39% 34.86%
+  );
+
+  content: "";
+
+  filter: blur(1px);
+
+  transform: scale(0);
+}
+
+@media screen and (max-width: 600px) {
+  #myImage>h1 {
+    font-size: 5rem;
+  }
+
+  /* sparkle */
+  .superscript::after {
+    --size: 6rem;
+  }
+}
+          #main{
+    position: relative;
+    overflow: hidden;
+}
+#page{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    text-color: #7a1cac;
+    background-color: #f1f1f1;
+}
+#page1{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f1f1;
+}
+#page2{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f1f1f1;
+}
+#page3{
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f1f1;
+}
+#page4{
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f1f1;
+}
+#loopi1>h1{
+    font-weight: 400;
+    opacity: 0.2;
+    color: #2e073f;
+    animation-name: animi;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#loopi1{
+    display: flex;
+    position: relative;
+    margin-left: -85%;
+    font-size: 120px;
+    white-space: nowrap;
+    font-family: gilroy;
+    rotate: -90deg;
+}
+#loopi1>h1>span{
+    -webkit-text-stroke: 1.2px #000;
+    color: transparent;
+    font-weight: 1000;
+}
+        #menu {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 20%;
+            left: 0%;
+            transform: translateX(-70%);
+            margin: -75px 0 0 -75px;
+            list-style: none;
+            font-size: 200%;
+            z-index: 1;
+        }
+
+        .menu-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            left: 50%;
+            top: 100%;
+            margin: -75px 0 0 -75px;
+            border-radius: 50%;
+            overflow: hidden;
+            text-decoration: none;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .menu-button:nth-child(1) {
+            animation: glowing 5s infinite, rudra 2s forwards;
+            opacity: 1;
+            animation-delay: 0s;
+        }
+
+        @keyframes rudra {
+            0% {
+                transform: translateY(-25%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(-55%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes glowing {
+            0% { box-shadow: 0 0 -100px #7a1cac; }
+            40% { box-shadow: 0 0 100px #7a1cac; }
+            60% { box-shadow: 0 0 100px #7a1cac; }
+            100% { box-shadow: 0 0 -100px #7a1cac; }
+        }
+        .menu-button .Image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .menu-item {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            left: 70%;
+            line-height: 200px;
+            margin: 58% 0px 0px 40%;
+            opacity: 0;
+            transform: translate(0px, 0px);
+            rotate: 70deg;
+            transition: transform 800ms ease, opacity 800ms ease;
+            z-index: -1;
+            align-items: center;
+        }
+
+        .menu-item a {
+            color: #fff;
+            position: relative;
+            top: 30%;
+            left: 0;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .menu-item:hover {
+            opacity: 0.5;
+        }
+
+        /* Show menu items when hovering over the menu button */
+        .menu-button:hover ~ .menu-item,
+        #menu:hover .menu-item {
+            opacity: 1;
+        }
+
+        /* Set specific transforms for each menu item */
+        .menu-button:hover ~ .menu-item:nth-child(2),
+        #menu:hover .menu-item:nth-child(2) {
+            transform: rotate(60deg) translateY(-150px) rotate(-60deg);
+        }
+
+        .menu-button:hover ~ .menu-item:nth-child(3),
+        #menu:hover .menu-item:nth-child(3) {
+            transform: rotate(20deg) translateY(-155px) rotate(-20deg);
+        }
+
+        .menu-button:hover ~ .menu-item:nth-child(4),
+        #menu:hover .menu-item:nth-child(4) {
+            transform: rotate(-20deg) translateY(-155px) rotate(20deg);
+        }
+
+        .menu-button:hover ~ .menu-item:nth-child(5),
+        #menu:hover .menu-item:nth-child(5) {
+            transform: rotate(-60deg) translateY(-150px) rotate(60deg);
+        }
+
+        #menu:not(:hover) .menu-item {
+            transition-delay: 500ms;
+            opacity: 0;
+        }
+
+        #tmenu {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 20%;
+            left: 100%;
+            transform: translateX(-70%);
+            margin: -75px 0 0 -75px;
+            list-style: none;
+            font-size: 200%;
+            z-index: 1;
+        }
+        .tmenu-item {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            left: 70%;
+            line-height: 200px;
+            margin: 40% 0px 0px -45%;
+            rotate: 70deg;
+            opacity: 0;
+            transform: translate(0px, 0px);
+            transition: transform 800ms ease, opacity 800ms ease;
+            z-index: -1;
+            align-items: center;
+        }
+
+        .tmenu-item a {
+            color: #fff;
+            position: relative;
+            top: 30%;
+            left: 0;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .tmenu-item:hover {
+            opacity: 0.5;
+        }
+
+        .menu-button:hover ~ .tmenu-item,
+        #tmenu:hover .tmenu-item {
+            opacity: 1;
+        }
+
+        /* Set specific transforms for each menu item */
+        .menu-button:hover ~ .tmenu-item:nth-child(2),
+        #tmenu:hover .tmenu-item:nth-child(2) {
+            transform:  translateY(200px) ;
+        }
+
+        #tmenu:not(:hover) .tmenu-item {
+            transition-delay: 500ms;
+            opacity: 0;
+        }
+        .content {
+            position: absolute;
+            text-align: center;
+            margin: -10px 0 0 -30px;
+            top: 70%;
+            left: 50%;
+            font-size: 20px;
+        }
+        .nav-text>h1{
+            font-family: gilroy;
+            font-weight: 1000;
+            color: #7a1cac;
+            rotate: -70deg;
+        }
+canvas{
+    position: relative;
+    z-index: 9;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+#loop{
+    display: flex;
+    position: absolute;
+    top: 10%;
+    height: 25%;
+    width: 100%;
+    font-size: 100px;
+    white-space: nowrap;
+    font-family: gilroy;
+}
+#loop>h1{
+    font-weight: 400;
+    animation-name: anim;
+    color: #2e073f;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#loop>h1>span{
+    -webkit-text-stroke: 1.2px #000;
+    color: transparent;
+    font-weight: 500;
+}
+#loopi>h1{
+    font-weight: 400;
+    opacity: 0.2;
+    color: #2e073f;
+    animation-name: animi;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#loopi{
+    display: flex;
+    position: relative;
+    margin-left: 80%;
+    font-size: 120px;
+    white-space: nowrap;
+    font-family: gilroy;
+    rotate: -90deg;
+}
+#loopi>h1>span{
+    -webkit-text-stroke: 1.2px #000;
+    color: transparent;
+    font-weight: 1000;
+}
+@keyframes animi{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+
+    }
+}
+@keyframes anim{
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#page>h3{
+    position: absolute;
+    top: 55%;
+    font-family: gilroy;
+    font-weight: 400;
+    color: #7c7c7c;
+    left: 5%;
+}
+#page>h4{
+    position: absolute;
+    top: 62%;
+    left: 25%;
+    font-family: gilroy;
+    font-weight: 500;
+}
+#page1>#right-text{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+#page1>#right-text>h3{
+    font-weight: 400;
+    color: #7c7c7c;
+}
+#page1>#right-text>h1{
+    line-height: 1.5;
+    font-size: 70px;
+    color: #ad49e1;
+
+}
+#page1>#left-text{
+    position: absolute;
+    top: 8%;
+    right: 5%;
+    text-align: end;
+}
+#page1>#left-text>h1{
+    font-size: 70px;
+    line-height: 1.5;
+    color: #2e073f;
+}
+
+#page1>#left-text>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page2>#text1{
+    position: absolute;
+    top: 47%;
+    left: 5%;
+}
+#page2>#text1>h1{
+    font-size: 60px;
+    line-height: 1.5;
+    color: #2e073f;
+}
+#page2>#text2{
+    position: absolute;
+    top: 45%;
+    right: 10%;
+}
+
+        #container {
+            position: relative;
+            left: 0;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            z-index: -1;
+            background-color: #ebd3f8;
+        }
+        .Image{
+            margin-left: 2px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #myImage {
+        }
+
+        .round-button {
+            position: absolute;
+            top: 7%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: none;
+            background-color: #ebd3f8;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .round-button:hover {
+            opacity: 1;
+            background-color: #2e073f;
+        }
+        .round-button:hover .Image {
+            filter: brightness(0) invert(1);
+        }
+        #myVideo {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+           .content {
+            flex: 1;
+            padding: 20px 0; /* Optional: some padding around the content */
+        }
+
+        /* Footer styling */
+        .fcontainer {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Social media icon styling */
+        .social-media {
+            margin-bottom: 10px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icon {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .social-icon:hover {
+            color: #55acee;
+        }
+
+        .credit {
+            text-align: center;
+            font-size: 14px;
+        }
+          .words-wrapper {
+          position: absolute;
+          top: 54%;
+  margin-left: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Kanit", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.words-wrapper .css {
+  color: #2ec4b6;
+}
+
+.words-wrapper .words {
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+  width: var(--width);
+  height: 60px;
+  padding: 0 10px;
+  border-radius: 6px;
+  color: var(--color, #000);
+  background: var(--color-bg, #ffc703);
+  box-sizing: content-box;
+  transition: all 0.7s;
+}
+
+.words-wrapper .words span {
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -100%);
+  transition: transform 0.7s, opacity 0.25s 0.25s;
+}
+
+.words-wrapper .words span.current {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.words-wrapper .words span.next {
+  transform: translate(-50%, 100%);
+}
+
+@media (max-width: 700px) {
+  .words-wrapper .words {
+    width: var(--width-mobile) !important;
+  }
+}
+#final{
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f1f1;
+}
+      #cmenu {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 78%;
+            left: 53%;
+            transform: translateX(-70%);
+            margin: -75px 0 0 -75px;
+            list-style: none;
+            font-size: 200%;
+            z-index: 1;
+        }
+        .cmenu-item {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            left: 70%;
+            line-height: 200px;
+            margin: 52% 0px 0px -12%;
+            rotate: 90deg;
+            opacity: 0;
+            transform: translate(0px, 0px);
+            transition: transform 800ms ease, opacity 800ms ease;
+            z-index: -1;
+            align-items: center;
+        }
+
+        .cmenu-item a {
+            color: #fff;
+            position: relative;
+            top: 30%;
+            left: 0;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .cmenu-item:hover {
+            opacity: 0.5;
+        }
+
+        .menu-button:hover ~ .cmenu-item,
+        #cmenu:hover .cmenu-item {
+            opacity: 1;
+        }
+
+        /* Set specific transforms for each menu item */
+        .menu-button:hover ~ .cmenu-item:nth-child(2),
+        #cmenu:hover .cmenu-item:nth-child(2) {
+            transform:  translateX(-200px) ;
+        }
+
+        #cmenu:not(:hover) .cmenu-item {
+            transition-delay: 500ms;
+            opacity: 0;
+        }
+
+#loopi2>h1{
+    font-weight: 400;
+    opacity: 0.2;
+    color: #2e073f;
+    animation-name: animi;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+#loopi2{
+    display: flex;
+    position: relative;
+    margin-top: -12%;
+    font-size: 120px;
+    white-space: nowrap;
+    font-family: gilroy;
+    rotate: 0deg;
+}
+#loopi2>h1>span{
+    -webkit-text-stroke: 1.2px #000;
+    color: transparent;
+    font-weight: 1000;
+}
+     .cnav-text>h1{
+            font-family: gilroy;
+            font-weight: 1000;
+            color: #7a1cac;
+            rotate: -90deg;
+        }
+</style>
+  </head>
+  <div id="main">
+      <div id="container">
+          <div id="textcontainer">
+              <button id="playButton" class="round-button" onclick="playVideo()">
+                  <img class="Image" src="{% static '/play.png' %}" alt="Image">
+              </button>
+              <video id="myVideo" loop>
+                  <source src="{% static '/bg.webm' %}" type="video/webm">
+                  Your browser does not support the video tag.
+              </video>
+              <div id="myImage">
+                  <h1>
+                      <span class="word">Design<span class="superscript"><img src="{% static '/logo.png' %}" alt="Brand Logo" class="navbar-logo"></span></span>
+                      <span class="word">Dynamo</span>
+                  </h1>
+              </div>
+          </div>
+      </div>
+      <div id="page">
+          <div id="loop">
+              <h1><b>Design </b><i>Dynamo&ensp;</i></span></h1>
+              <h1><b>Design </b><i>Dynamo&ensp;&ensp;</i></span></h1>
+              <h1><b>Design </b><i>Dynamo&ensp;</i></span></h1>
+          </div>
+          <canvas></canvas>
+      </div>
+      <div id="page1">
+          <div id="right-text">
+              <h3>Hey, What's Up !!!</h3>
+              <h1>&ensp;&ensp;&ensp;WE
+                  <br>
+                  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;ARE</h1>
+          </div>
+          <div id="left-text">
+              <h1>Design&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                  <br>
+                  Dynamo&ensp;&ensp;&ensp;
+                  <br></h1>
+              <h3>Design that inspires...</h3>
+          </div>
+      </div>
+      <div id="page2">
+          <div id="text1">
+              <h1>What We Can Do ?</h1>
+          </div>
+               <div class="words-wrapper">
+ <span class="css">
+  <span class="words">
+    <span class="current" data-bg-color="#ffc703" data-color="#7a1cac">Editing</span>
+    <span class="next" data-bg-color="#004e98" data-color="#ebd3f8">Cgi</span>
+    <span data-bg-color="#8cb369" data-color="#7a1cac">Animations</span>
+    <span data-bg-color="#104911" data-color="#ebd3f8">Vfx</span>
+    <span data-bg-color="#b8c0ff" data-color="#7a1cac">Designing</span>
+  </span>
+ </span>
+</div>
+      </div>
+        <div id="page3">
+            <div id="loopi">
+              <h1><b>Projects&ensp;</b><i>Projects&ensp;</i><b>Projects&ensp;</b><i>Projects&ensp;</i><b>Projects&ensp;</b><i>Projects&ensp;</i></span></h1>
+              <h1><b>Projects&ensp;</b><i>Projects&ensp;</i><b>Projects&ensp;</b><i>Projects&ensp;</i><b>Projects&ensp;</b><i>Projects&ensp;</i></span></h1>
+            </div>
+            <ul id="menu">
+            <a class="menu-button icon-plus" href="#" title="Show navigation">
+                <img class="Image" src="{% static '/rudra.png' %}" alt="Image">
+            </a>
+            <li class="menu-item">
+                <a href="{% url 'teaser' %}"><div class="nav-text"><h1>Teaser</h1></div></a>
+            </li>
+            <li class="menu-item">
+                <a href="{% url 'CGI' %}"><div class="nav-text"><h1>CGI</h1></div></a>
+            </li>
+            <li class="menu-item">
+                <a href="{% url 'graphic' %}"><div class="nav-text"><h1>Graphic</h1></div></a>
+            </li>
+        </ul>
+        </div>
+       <div id="page4">
+            <div id="loopi1">
+              <h1><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i></span></h1>
+              <h1><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i></span></h1>
+            </div>
+             <ul id="tmenu">
+            <a class="menu-button icon-plus" href="#" title="Show navigation">
+                <img class="Image" src="{% static '/rudra.png' %}" alt="Image">
+            </a>
+            <li class="tmenu-item">
+                <a href="{% url 'team' %}"><div class="nav-text"><h1>Founders</h1></div></a>
+            </li>
+        </ul>
+        </div>
+            <div id="final">
+            <div id="loopi2">
+              <h1><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i></span></h1>
+              <h1><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i><b>Our&ensp;</b><i>Team&ensp;</i></span></h1>
+            </div>
+            <ul id="cmenu">
+            <a class="menu-button icon-plus" href="#" title="Show navigation">
+                <img class="Image" src="{% static '/rudra.png' %}" alt="Image">
+            </a>
+            <li class="cmenu-item">
+                <a href="{% url 'contact' %}"><div class="cnav-text"><h1>Contact_Us</h1></div></a>
+            </li>
+        </ul>
+        </div>
+      <div class="fcontainer">
+       <div class="social-media">
+        <a href="https://www.facebook.com/" class="social-icon">
+            <img src="{% static '/facebook1.png' %}" alt="Facebook">
+        </a>
+        <a href="https://www.twitter.com/" class="social-icon">
+            <img src="{% static '/twitter1.png' %}" alt="Twitter">
+        </a>
+        <a href="https://www.instagram.com/" class="social-icon">
+            <img src="{% static '/inastagram.png' %}" alt="Instagram">
+        </a>
+        <!-- Add more social media icons as needed -->
+    </div>
+        <div class="credit">
+            <p>&copy; 2024 Design Dynamo. All rights reserved.</p>
+        </div>
+    </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" integrity="sha512-AMl4wfwAmDM1lsQvVBBRHYENn1FR8cfOTpt8QVbb/P55mYOdahHD4LmHM1W55pNe3j/3od8ELzPf/8eNkkjISQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script>
+          function playVideo() {
+              document.getElementById('myImage').style.display = 'none';
+              var video = document.getElementById('myVideo');
+              video.style.display = 'block';
+              video.play();
+              var playButton = document.getElementById('playButton');
+              playButton.style.display = 'none';
+          }
+
+
+
+                  function locomotive() {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const locoScroll = new LocomotiveScroll({
+          el: document.querySelector("#main"),
+          smooth: true ,
+        });
+        locoScroll.on("scroll", ScrollTrigger.update);
+
+        ScrollTrigger.scrollerProxy("#main", {
+          scrollTop(value) {
+            return arguments.length
+              ? locoScroll.scrollTo(value, 0, 0)
+              : locoScroll.scroll.instance.scroll.y;
+          },
+
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight,
+            };
+          },
+
+          pinType: document.querySelector("#main").style.transform
+            ? "transform"
+            : "fixed",
+        });
+        ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+        ScrollTrigger.refresh();
+      }
+      locomotive();
+
+
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+
+      window.addEventListener("resize", function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render();
+      });
+
+      function files(index) {
+        var data = `
+           /static/CYBERFICTION/0001.png
+           /static/CYBERFICTION/0002.png
+           /static/CYBERFICTION/0003.png
+           /static/CYBERFICTION/0004.png
+           /static/CYBERFICTION/0005.png
+           /static/CYBERFICTION/0006.png
+           /static/CYBERFICTION/0007.png
+           /static/CYBERFICTION/0008.png
+           /static/CYBERFICTION/0009.png
+           /static/CYBERFICTION/0010.png
+           /static/CYBERFICTION/0011.png
+           /static/CYBERFICTION/0012.png
+           /static/CYBERFICTION/0013.png
+           /static/CYBERFICTION/0014.png
+           /static/CYBERFICTION/0015.png
+           /static/CYBERFICTION/0016.png
+           /static/CYBERFICTION/0017.png
+           /static/CYBERFICTION/0018.png
+           /static/CYBERFICTION/0019.png
+           /static/CYBERFICTION/0020.png
+           /static/CYBERFICTION/0021.png
+           /static/CYBERFICTION/0022.png
+           /static/CYBERFICTION/0023.png
+           /static/CYBERFICTION/0024.png
+           /static/CYBERFICTION/0025.png
+           /static/CYBERFICTION/0026.png
+           /static/CYBERFICTION/0027.png
+           /static/CYBERFICTION/0028.png
+           /static/CYBERFICTION/0029.png
+           /static/CYBERFICTION/0030.png
+           /static/CYBERFICTION/0031.png
+           /static/CYBERFICTION/0032.png
+           /static/CYBERFICTION/0033.png
+           /static/CYBERFICTION/0034.png
+           /static/CYBERFICTION/0035.png
+           /static/CYBERFICTION/0036.png
+           /static/CYBERFICTION/0037.png
+           /static/CYBERFICTION/0038.png
+           /static/CYBERFICTION/0039.png
+           /static/CYBERFICTION/0040.png
+           /static/CYBERFICTION/0041.png
+           /static/CYBERFICTION/0042.png
+           /static/CYBERFICTION/0043.png
+           /static/CYBERFICTION/0044.png
+           /static/CYBERFICTION/0045.png
+           /static/CYBERFICTION/0046.png
+           /static/CYBERFICTION/0047.png
+           /static/CYBERFICTION/0048.png
+           /static/CYBERFICTION/0049.png
+           /static/CYBERFICTION/0050.png
+           /static/CYBERFICTION/0051.png
+           /static/CYBERFICTION/0052.png
+           /static/CYBERFICTION/0053.png
+           /static/CYBERFICTION/0054.png
+           /static/CYBERFICTION/0055.png
+           /static/CYBERFICTION/0056.png
+           /static/CYBERFICTION/0057.png
+           /static/CYBERFICTION/0058.png
+           /static/CYBERFICTION/0059.png
+           /static/CYBERFICTION/0060.png
+           /static/CYBERFICTION/0061.png
+           /static/CYBERFICTION/0062.png
+           /static/CYBERFICTION/0063.png
+           /static/CYBERFICTION/0064.png
+           /static/CYBERFICTION/0065.png
+           /static/CYBERFICTION/0066.png
+           /static/CYBERFICTION/0067.png
+           /static/CYBERFICTION/0068.png
+           /static/CYBERFICTION/0069.png
+           /static/CYBERFICTION/0070.png
+           /static/CYBERFICTION/0071.png
+           /static/CYBERFICTION/0072.png
+           /static/CYBERFICTION/0073.png
+           /static/CYBERFICTION/0074.png
+           /static/CYBERFICTION/0075.png
+           /static/CYBERFICTION/0076.png
+           /static/CYBERFICTION/0077.png
+           /static/CYBERFICTION/0078.png
+           /static/CYBERFICTION/0079.png
+           /static/CYBERFICTION/0080.png
+           /static/CYBERFICTION/0081.png
+           /static/CYBERFICTION/0082.png
+           /static/CYBERFICTION/0083.png
+           /static/CYBERFICTION/0084.png
+           /static/CYBERFICTION/0085.png
+           /static/CYBERFICTION/0086.png
+           /static/CYBERFICTION/0087.png
+           /static/CYBERFICTION/0088.png
+           /static/CYBERFICTION/0089.png
+           /static/CYBERFICTION/0090.png
+           /static/CYBERFICTION/0091.png
+           /static/CYBERFICTION/0092.png
+           /static/CYBERFICTION/0093.png
+           /static/CYBERFICTION/0094.png
+           /static/CYBERFICTION/0095.png
+           /static/CYBERFICTION/0096.png
+           /static/CYBERFICTION/0097.png
+           /static/CYBERFICTION/0098.png
+           /static/CYBERFICTION/0099.png
+           /static/CYBERFICTION/0100.png
+           /static/CYBERFICTION/0101.png
+           /static/CYBERFICTION/0102.png
+           /static/CYBERFICTION/0103.png
+           /static/CYBERFICTION/0104.png
+           /static/CYBERFICTION/0105.png
+           /static/CYBERFICTION/0106.png
+           /static/CYBERFICTION/0107.png
+           /static/CYBERFICTION/0108.png
+           /static/CYBERFICTION/0109.png
+           /static/CYBERFICTION/0110.png
+           /static/CYBERFICTION/0111.png
+           /static/CYBERFICTION/0112.png
+           /static/CYBERFICTION/0113.png
+           /static/CYBERFICTION/0114.png
+           /static/CYBERFICTION/0115.png
+           /static/CYBERFICTION/0116.png
+           /static/CYBERFICTION/0117.png
+           /static/CYBERFICTION/0118.png
+           /static/CYBERFICTION/0119.png
+           /static/CYBERFICTION/0120.png
+           /static/CYBERFICTION/0121.png
+           /static/CYBERFICTION/0122.png
+           /static/CYBERFICTION/0123.png
+           /static/CYBERFICTION/0124.png
+           /static/CYBERFICTION/0125.png
+           /static/CYBERFICTION/0126.png
+           /static/CYBERFICTION/0127.png
+           /static/CYBERFICTION/0128.png
+           /static/CYBERFICTION/0129.png
+           /static/CYBERFICTION/0130.png
+           /static/CYBERFICTION/0131.png
+           /static/CYBERFICTION/0132.png
+           /static/CYBERFICTION/0133.png
+           /static/CYBERFICTION/0134.png
+           /static/CYBERFICTION/0135.png
+           /static/CYBERFICTION/0136.png
+           /static/CYBERFICTION/0137.png
+           /static/CYBERFICTION/0138.png
+           /static/CYBERFICTION/0139.png
+           /static/CYBERFICTION/0140.png
+           /static/CYBERFICTION/0141.png
+           /static/CYBERFICTION/0142.png
+           /static/CYBERFICTION/0143.png
+           /static/CYBERFICTION/0144.png
+           /static/CYBERFICTION/0145.png
+           /static/CYBERFICTION/0146.png
+           /static/CYBERFICTION/0147.png
+           /static/CYBERFICTION/0148.png
+           /static/CYBERFICTION/0149.png
+           /static/CYBERFICTION/0150.png
+           /static/CYBERFICTION/0151.png
+       `;
+        return data.split("\n")[index];
+      }
+
+      const frameCount = 70;
+
+      const images = [];
+      const imageSeq = {
+        frame: 1,
+      };
+
+      for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        img.src = files(i);
+        images.push(img);
+      }
+
+      gsap.to(imageSeq, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: `none`,
+        scrollTrigger: {
+          scrub: 0.01,
+          trigger: `#page>canvas`,
+          start: `#main`,
+          end: `403% top`,
+          scroller: `#main`,
+        },
+        onUpdate: render,
+      });
+
+      images[1].onload = render;
+
+      function render() {
+        scaleImage(images[imageSeq.frame], context);
+      }
+
+      function scaleImage(img, ctx) {
+        var canvas = ctx.canvas;
+        var hRatio = canvas.width / img.width;
+        var vRatio = canvas.height / img.height;
+        var ratio = Math.max(hRatio, vRatio);
+        var centerShift_x = (canvas.width - img.width * ratio) ;
+        var centerShift_y = (canvas.height - img.height * ratio);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          img.width,
+          img.height,
+          centerShift_x,
+          centerShift_y,
+          img.width * ratio,
+          img.height * ratio
+        );
+      }
+      ScrollTrigger.create({
+        trigger: "#page>canvas",
+        pin: true,
+        markers: true,
+        scroller: `#main`,
+        start: `top top`,
+        end: `400% top`,
+      });
+
+      gsap.to("#page1",{
+        scrollTrigger:{
+          trigger:`#page1`,
+          start:`top top`,
+          end:`bottom top`,
+          pin:true,
+          scroller:`#main`
+        }
+      })
+      gsap.to("#page2",{
+        scrollTrigger:{
+          trigger:`#page2`,
+          start:`top top`,
+          end:`bottom top`,
+          pin:true,
+          scroller:`#main`
+        }
+      })
+gsap.to("#page3",{
+  scrollTrigger:{
+    trigger:`#page3`,
+    start:`top top`,
+    end:`bottom top`,
+    pin:true,
+    scroller:`#main`
+  }
+})
+gsap.to("#page4",{
+  scrollTrigger:{
+    trigger:`#page4`,
+    start:`top top`,
+    end:`bottom top`,
+    pin:true,
+    scroller:`#main`
+  }
+})
+gsap.to("#final",{
+  scrollTrigger:{
+    trigger:`#final`,
+    start:`top top`,
+    end:`bottom top`,
+    pin:true,
+    scroller:`#main`
+  }
+})
+          const wrapper = document.querySelector(".words");
+const words = wrapper.querySelectorAll("span");
+const currentWord = wrapper.querySelector("span.current");
+const wordsWidths = Array.from(words).map((word) => word.offsetWidth);
+const maxWordsWidth = Math.max(...wordsWidths);
+const CURRENT_CLASS = "current";
+const NEXT_CLASS = "next";
+
+wrapper.style.setProperty("--width", `${currentWord.offsetWidth}px`);
+wrapper.style.setProperty("--width-mobile", `${maxWordsWidth}px`);
+
+setInterval(() => {
+  const currentWord = wrapper.querySelector("span.current");
+  const nextWord = wrapper.querySelector("span.next");
+  const nextNextWord = nextWord.nextElementSibling
+    ? nextWord.nextElementSibling
+    : wrapper.firstElementChild;
+  currentWord.classList.remove(CURRENT_CLASS);
+  nextWord.classList.remove(NEXT_CLASS);
+  nextWord.classList.add(CURRENT_CLASS);
+  nextNextWord.classList.add(NEXT_CLASS);
+  wrapper.style.setProperty("--color", nextWord.dataset.color);
+  wrapper.style.setProperty("--color-bg", nextWord.dataset.bgColor);
+  wrapper.style.setProperty("--width", `${nextWord.offsetWidth}px`);
+}, 1500);
+      </script>
+</html>
