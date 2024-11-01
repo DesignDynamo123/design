@@ -16,16 +16,13 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4z$0wio+m2%50tgv43nf2irx-c_yqcd63nydu@jt5#o+&!8neh'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
 # Application definition
 
@@ -79,6 +76,12 @@ DATABASES = {
     }
 }
 
+# Initialize Firebase Admin SDK
+cred = credentials.Certificate('path/to/your/firebase/serviceAccountKey.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': FIREBASE_DATABASE_URL
+})
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -108,17 +111,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'design_dynamo/static'),  # Adjust this path as needed
+    BASE_DIR / 'design_dynamo/static',  # Update this to your static files directory
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
